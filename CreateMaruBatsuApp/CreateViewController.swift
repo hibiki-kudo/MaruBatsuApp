@@ -13,7 +13,7 @@ class CreateViewController: UIViewController {
     @IBOutlet var InputQuestion: UITextField!
     let userDefaults = UserDefaults.standard
     
-    var AnswerResult:Bool = true
+    var AnswerResult:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +32,13 @@ class CreateViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func TFChoice(_ sender: Any) {
-        let selectedAnswer = UISegmentedControl()
-        if selectedAnswer.selectedSegmentIndex == 0{
+    @IBAction func TFChoice(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0{
             AnswerResult = false
-        }else if selectedAnswer.selectedSegmentIndex == 1{
+            print("✗の\(AnswerResult)です。")
+        }else if sender.selectedSegmentIndex == 1{
             AnswerResult = true
+            print("マルの\(AnswerResult)です。")
         }
     }
     
@@ -51,19 +52,19 @@ class CreateViewController: UIViewController {
         SaveSub["answer"] = AnswerResult
         
         if var SaveQuestion = userDefaults.object(forKey: "Questions") as? [[String: Any]]{
+        SaveQuestion.append(SaveSub)
         userDefaults.set(SaveQuestion,forKey: "Questions")
         InputQuestion.text = ""
         }else{
-            userDefaults.set(SaveSub,forKey: "Questions")
+            let sendItem:[[String:Any]] = [SaveSub]
+            userDefaults.set(sendItem,forKey: "Questions")
             InputQuestion.text = ""
         }
         print("ここはCreateViewConの\(userDefaults.data(forKey: "Questions"))")
     }
     
     @IBAction func DeleteQuestions(_ sender: Any) {
-        var delQue = userDefaults.object(forKey: "Questions") as? [[String: Any]]
-        delQue?.removeAll()
-        userDefaults.set(delQue,forKey: "Question")
+        userDefaults.removeObject(forKey: "Questions")
     }
     /*
     // MARK: - Navigation

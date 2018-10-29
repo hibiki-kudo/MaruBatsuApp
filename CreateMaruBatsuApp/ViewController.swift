@@ -30,11 +30,15 @@ class ViewController: UIViewController {
     func ShowQuestion(){
         let questionText = userDefaults.object(forKey: "Questions") as? [[String: Any]]
         guard var inputQue = questionText?[QuestionNum] else{
+        QuestionText.text = "問題がありません、問題を作りましょう！！！"
             return
         }
+
         
-        if inputQue["question"] != nil{
-            QuestionText.text = inputQue["question"] as! String
+        if inputQue != nil{
+            QuestionText.text = inputQue["question"] as? String
+        
+
         }
         
     }
@@ -49,24 +53,25 @@ class ViewController: UIViewController {
         if let ans = question["answer"] as? Bool{
             
             if ans == Answer{
-                showAlert(message: "正解です")
+                showAlert("正解です")
             
             }else{
-                showAlert(message: "不正解です")
+                showAlert("不正解です")
             }
             
             QuestionNum += 1
-            ShowQuestion()
         }
         
 
-        if (questionText?.count)! >= QuestionNum{
+        if (questionText?.count)! <= QuestionNum{
             QuestionNum = 0
             
         }
+        
+        ShowQuestion()
     }
     
-    func showAlert(message: String) {
+    func showAlert(_ message: String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         let close = UIAlertAction(title: "閉じる", style: .cancel, handler: nil)
         alert.addAction(close)
@@ -79,6 +84,9 @@ class ViewController: UIViewController {
     
     @IBAction func Yestapped(_ sender: Any) {
         CheckAnswer(Answer: true)
+    }
+    @IBAction func GoCreate(_ sender: Any) {
+        QuestionNum = 0
     }
 }
 

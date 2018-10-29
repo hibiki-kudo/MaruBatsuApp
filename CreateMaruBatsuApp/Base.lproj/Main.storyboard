@@ -45,6 +45,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="問題を作成する"/>
                                 <connections>
+                                    <action selector="GoCreate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZVe-1R-1M5"/>
                                     <segue destination="yZ3-4V-wzr" kind="show" id="Qah-zo-kJn"/>
                                 </connections>
                             </button>
