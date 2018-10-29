@@ -27,20 +27,26 @@
                                 <state key="normal" title="✗">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="Notapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xEY-7Z-b7V"/>
+                                </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HEN-KF-yuU">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="問題がありません、問題を作りましょう！！！" translatesAutoresizingMaskIntoConstraints="NO" id="HEN-KF-yuU">
                                 <rect key="frame" x="16" y="77" width="343" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="HEN-KF-yuU" secondAttribute="height" multiplier="343:128" id="Zov-bz-YNf"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyh-rE-92n">
                                 <rect key="frame" x="116" y="20" width="143" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="問題を作成する"/>
+                                <connections>
+                                    <segue destination="yZ3-4V-wzr" kind="show" id="Qah-zo-kJn"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqw-HV-AR5">
                                 <rect key="frame" x="191.5" y="487.5" width="167" height="167"/>
@@ -53,6 +59,9 @@
                                 <state key="normal" title="○">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="Yestapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nCT-Bo-uGu"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -74,15 +83,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="QuestionText" destination="HEN-KF-yuU" id="vaK-JU-qUP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
         </scene>
-        <!--View Controller-->
+        <!--Create View Controller-->
         <scene sceneID="h0V-Ya-hs0">
             <objects>
-                <viewController id="yZ3-4V-wzr" sceneMemberID="viewController">
+                <viewController id="yZ3-4V-wzr" customClass="CreateViewController" customModule="CreateMaruBatsuApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fr9-aU-z03">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -96,6 +108,9 @@
                                 <state key="normal" title="問題を作成">
                                     <color key="titleColor" red="0.62195169930000005" green="0.0042182393370000003" blue="0.98196142909999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="CreateQuestion:" destination="yZ3-4V-wzr" eventType="touchUpInside" id="qXt-GM-75x"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T9R-hj-lv6">
                                 <rect key="frame" x="87.5" y="560" width="200" height="40"/>
@@ -106,6 +121,9 @@
                                 <state key="normal" title="問題をすべて削除">
                                     <color key="titleColor" red="0.99822002649999997" green="0.1562293172" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="DeleteQuestions:" destination="yZ3-4V-wzr" eventType="touchUpInside" id="cj0-3Q-Jdy"/>
+                                </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Sa4-b8-KVY">
                                 <rect key="frame" x="105.5" y="363" width="164" height="29"/>
@@ -116,6 +134,9 @@
                                     <segment title="✗"/>
                                     <segment title="○"/>
                                 </segments>
+                                <connections>
+                                    <action selector="TFChoice:" destination="yZ3-4V-wzr" eventType="valueChanged" id="432-Uc-7Fg"/>
+                                </connections>
                             </segmentedControl>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="問題を入力しましょう" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E47-v5-eSC">
                                 <rect key="frame" x="66" y="269" width="243" height="30"/>
@@ -130,6 +151,9 @@
                                     <constraint firstAttribute="width" constant="100" id="ghB-0s-Jde"/>
                                 </constraints>
                                 <state key="normal" title="TOPに戻る"/>
+                                <connections>
+                                    <action selector="BackTop:" destination="yZ3-4V-wzr" eventType="touchUpInside" id="3UR-s2-cPH"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -149,6 +173,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ROk-tc-aEC"/>
                     </view>
+                    <connections>
+                        <outlet property="InputQuestion" destination="E47-v5-eSC" id="G0n-8N-fcQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qf8-L8-Hhp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
